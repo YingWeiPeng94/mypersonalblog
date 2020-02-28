@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人博客</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/blog_detail.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./js/axios.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a class="title" href="#">我的个人博客|技术博客</a>
+            <ul class="menu">
+                <li><a href="./index.html">首页</a></li>
+                <li><a href="./sitemap.html">地图</a></li>
+                <li><a href="./about.html">关于</a></li>
+                <li><a href="./guestbook.html">留言</a></li>
+            </ul>
+            <div class="search_bar">
+                <input type="text" placeholder="输入关键词查找">
+                <button>搜索</button>
+            </div>
+        </div>
+    </header>
+    <div class="content">
+        <div class="content-left">
+            <div class="blog" id="blog_detail">
+                <div class="blog_title">{{title}}</div>
+                <div class="blog_msg">作者：Panda 标签:{{tags}} 浏览{{views}}</div>
+                <div class="blog_content" v-html="content"></div>
+            </div>
+            <div class="blog-comments" id="blogComments">
+                <span class="blog-comments-msg">当前文章：目前有{{total}}条留言</span>
+                <div class="blog-comment" v-for="(comment,index) in comments" :key="index">
+                    <span><b>{{comment.user_name}}：</b> {{comment.options}}发表于 {{comment.utime}}<a style="cursor: pointer;" @click="reply(comment.id,comment.user_name)" >[回复]</a></span>
+                    <div>{{comment.comments}}</div>
+                </div>
+            </div>
+            <div class="send_comment" id="sendComment">
+                <span>发表评论</span>
+                <div>
+                    <input type="hidden" id="comment_reply" value="-1">
+                    <!-- -1代表评论，不是则为回复 -->
+                    <input type="hidden" id="comment_reply_name" value="0">
+                    <input type="text" placeholder="昵称" id="comment_name">
+                    <input type="text" placeholder="邮箱（评论被回复时你能收到通知）" id="comment_email">
+                </div>
+                <div>
+                    <textarea id="comment_content" placeholder="无意义的内容我可能不会回复你"></textarea>
+                </div>
+                <div>
+                    <input type="text" placeholder="验证码" id="comment_code">
+                    <span v-html="vcode" @click="changeCode()"></span>
+                </div>
+                <button @click="sendComment()">提交评论</button>
+            </div>
+        </div>
+        <div class="content-right">
+            <div class="right-module" id="tags">
+                <div>随机标签云</div>
+                <a href="/" v-for="tag in tags" :style="{color:randomColor(),fontSize:randomSize()}">{{tag}}</a>
+                <!-- <a href="/">asd</a>
+                <a href="/">asd</a>
+                <a href="/">asd</a>  -->
+            </div>
+            <div class="right-module" id="newHot">
+                <div>最近热门</div>
+               <ul>
+                   <li v-for="item in titleList"><a :href="item.link">{{item.title}}</a></li>
+                   <!-- <li><a href="/">查看你的AWS服务器已使用流量</a></li>
+                   <li><a href="/">查看你的AWS服务器已使用流量</a></li>
+                   <li><a href="/">查看你的AWS服务器已使用流量</a></li> -->
+               </ul>
+                
+            </div>
+            <div class="right-module" id="new-comments">
+                <div>最新评论</div>
+                <ul>
+                    <li v-for="item in commentList">
+                        <div>
+                            <span>{{item.name}}</span>
+                            <span class="pull-right">{{item.data}}</span>
+                        </div>
+                        <p>{{item.comment}}</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="right-module">
+                <div>友情链接</div>
+                   <span><a href="/">挨踢茶馆</a></span><span><a href="/">挨踢茶馆</a></span>
+                   <span><a href="/">挨踢茶馆</a></span><span><a href="/">挨踢茶馆</a></span>
+                   <span><a href="/">挨踢茶馆</a></span><span><a href="/">挨踢茶馆</a></span>
+                   <span><a href="/">挨踢茶馆</a></span><span><a href="/">挨踢茶馆</a></span>
+                   <span><a href="/">挨踢茶馆</a></span><span><a href="/">挨踢茶馆</a></span>
+            
+                </div>
+        </div>
+        
+    </div>
+    <footer class="footer">
+        <ul>
+            <li>C/C++</li>
+            <li>C/C++</li>
+            <li>C/C++</li>
+            <li>C/C++</li>
+            <li>C/C++</li>
+            <li>C/C++</li>
+            <li>C/C++</li>
+            <li>C/C++</li>
+            <li>C/C++</li>
+            <li>C/C++</li>
+        </ul>
+        <p>Copyright © 2010-2019 个人博客 All rights reserved. 由免费开源的WordPress强力驱动. 鲁ICP备14017955号站长统计</p>
+    </footer>
+    <script src="./js/blog_detail.js"></script>
+    <script src="./js/base.js"></script>
+</body>
+</html>
