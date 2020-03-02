@@ -19,10 +19,7 @@
                 <li><a href="./about.html">关于</a></li>
                 <li><a href="./guestbook.html">留言</a></li>
             </ul>
-            <div class="search_bar">
-                <input type="text" placeholder="输入关键词查找">
-                <button>搜索</button>
-            </div>
+           
         </div>
     </header>
     <div class="content">
@@ -81,10 +78,10 @@
                 <ul>
                     <li v-for="item in commentList">
                         <div>
-                            <span>{{item.name}}</span>
-                            <span class="pull-right">{{item.data}}</span>
+                            <span>{{item.user_name}}</span>
+                            <span class="pull-right">{{item.ctime}}</span>
                         </div>
-                        <p>{{item.comment}}</p>
+                        <p>{{item.comments}}</p>
                     </li>
                 </ul>
             </div>
@@ -95,7 +92,6 @@
                    <span><a href="/">挨踢茶馆</a></span><span><a href="/">挨踢茶馆</a></span>
                    <span><a href="/">挨踢茶馆</a></span><span><a href="/">挨踢茶馆</a></span>
                    <span><a href="/">挨踢茶馆</a></span><span><a href="/">挨踢茶馆</a></span>
-            
                 </div>
         </div>
     </div>

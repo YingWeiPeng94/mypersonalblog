@@ -70,7 +70,6 @@ const articleList = new Vue({
                     } catch (e) {
                         console.log(e)
                     }
-                    console.log(s)
                     axios({
                         method:"get",
                         url:"/queryBlogBySearchData?page=" + (page-1) + "&pageSize=" + pageSize + "&s=" + s,

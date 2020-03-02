@@ -19,27 +19,27 @@
                 <li><a href="./about.html">关于</a></li>
                 <li><a href="./guestbook.html">留言</a></li>
             </ul>
-            <div class="search_bar">
+            <!-- <div class="search_bar">
                 <input type="text" placeholder="输入关键词查找">
                 <button>搜索</button>
-            </div>
+            </div> -->
         </div>
     </header>
     <div class="content">
         <div class="content-left">
             <div class="description">
                 <div class="about-title">关于我</div>
+                <p>测试-----测试</p>
                 <p>aaaaaaaaaaaasdkk</p>
                 <p>aaaaaaaaaaaasdkk</p>
                 <p>aaaaaaaaaaaasdkk</p>
-                <p>aaaaaaaaaaaasdkk</p>
-                <p>aaaaaaaaaaaasdkk</p>
+                <p>测试-----测试</p>
                 <div class="about-title">关于博客</div>
+                <p>测试-----测试</p>
                 <p>aaaaaaaaaaaasdkk</p>
                 <p>aaaaaaaaaaaasdkk</p>
                 <p>aaaaaaaaaaaasdkk</p>
-                <p>aaaaaaaaaaaasdkk</p>
-                <p>aaaaaaaaaaaasdkk</p>
+                <p>测试-----测试</p>
             </div>
             <div class="blog-comments" id="blogComments">
                 <span class="blog-comments-msg">当前文章：目前有{{total}}条留言</span>
@@ -85,15 +85,15 @@
                </ul>
                 
             </div>
-             <div class="right-module" id="new-comments">
+            <div class="right-module" id="new-comments">
                 <div>最新评论</div>
                 <ul>
                     <li v-for="item in commentList">
                         <div>
-                            <span>{{item.name}}</span>
-                            <span class="pull-right">{{item.data}}</span>
+                            <span>{{item.user_name}}</span>
+                            <span class="pull-right">{{item.ctime}}</span>
                         </div>
-                        <p>{{item.comment}}</p>
+                        <p>{{item.comments}}</p>
                     </li>
                 </ul>
             </div>

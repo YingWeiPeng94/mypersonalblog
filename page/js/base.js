@@ -37,7 +37,7 @@ var randomTags = new Vue({//随机标签
         })
     }
 })
-const newHot = new Vue({//最近热门
+var newHot = new Vue({//最近热门
     el:"#newHot",
     data:{
         titleList:[
@@ -67,23 +67,24 @@ const newHot = new Vue({//最近热门
         })
     }
 })
-const newCommnets = new Vue({
+var newCommnets = new Vue({
     el:"#new-comments",
     data:{
         commentList:[
-            {name:"这是个用户名",data:"2018-10-10",comment:"这是一大出串评论"},
-            {name:"这是个用户名",data:"2018-10-10",comment:"这是一大出串评论"},
-            {name:"这是个用户名",data:"2018-10-10",comment:"这是一大出串评论"},
-            {name:"这是个用户名",data:"2018-10-10",comment:"这是一大出串评论"},
-            {name:"这是个用户名",data:"2018-10-10",comment:"这是一大出串评论"},
-            {name:"这是个用户名",data:"2018-10-10",comment:"这是一大出串评论"},
-            {name:"这是个用户名",data:"2018-10-10",comment:"这是一大出串评论"},
-            {name:"这是个用户名",data:"2018-10-10",comment:"这是一大出串评论"},
-            {name:"这是个用户名",data:"2018-10-10",comment:"这是一大出串评论"},
-            {name:"这是个用户名",data:"2018-10-10",comment:"这是一大出串评论"},
+            // {name:"这是个用户名",data:"2018-10-10",comment:"这是一大出串评论"},
+            // {name:"这是个用户名",data:"2018-10-10",comment:"这是一大出串评论"},
+            // {name:"这是个用户名",data:"2018-10-10",comment:"这是一大出串评论"},
+            // {name:"这是个用户名",data:"2018-10-10",comment:"这是一大出串评论"},
+            // {name:"这是个用户名",data:"2018-10-10",comment:"这是一大出串评论"},
+            // {name:"这是个用户名",data:"2018-10-10",comment:"这是一大出串评论"},
+            // {name:"这是个用户名",data:"2018-10-10",comment:"这是一大出串评论"},
+            // {name:"这是个用户名",data:"2018-10-10",comment:"这是一大出串评论"},
+            // {name:"这是个用户名",data:"2018-10-10",comment:"这是一大出串评论"},
+            // {name:"这是个用户名",data:"2018-10-10",comment:"这是一大出串评论"},
         ]
     },
     created(){
+        
         axios({
             method:"get",
             url:"/queryNewComments"
@@ -92,33 +93,4 @@ const newCommnets = new Vue({
             newCommnets.commentList = resp.data.data
         })
     }
-})
-var searchBar = new Vue({
-    el:"#searchBar",
-    data:{
-        content:"",
-        page:1,
-        pageSize:5,
-    },
-    watch:{
-        content(val){
-            axios({
-                method:"get",
-                url:"/queryBlogBySearchData?data="+val,
-            }).then(function(result){
-                console.log(result)
-               
-            }).catch(function(error){
-                console.log(error)
-            })
-        }
-    },
-    methods:{
-        search(){ 
-            window.open("?s="+this.content,"_blank");    
-        },
-    },
-    computed:{
-    }
-    
 })

@@ -103,28 +103,11 @@ var send_comment = new Vue({
             return function () {
                 var code = document.getElementById("comment_code").value
                 var searchUrlParams = location.search.indexOf("?") > -1 ? location.search.split("?")[1] : "";
-                //获取url参数
-                console.log(typeof(code),typeof(this.rightCode))
                 if (code.toLowerCase() != this.rightCode.toLowerCase()) {
                     alert("验证码错误")
                     return
                 }
-                // if (searchUrlParams == "") {
-                //     return
-                // } else {
                     var bid = -2;//-2代表留言的评论
-                    // for (var i = 0; i < searchUrlParams.length; i++) {
-
-                    //     if (searchUrlParams.split("=")[0] == "bid") {
-
-                    //         try {
-                    //             bid = parseInt(searchUrlParams.split("=")[1])
-                    //             // console.log(bid)
-                    //         } catch (e) {
-                    //             console.log(e)
-                    //         }
-                    //     }
-                    // }
 
                     var reply = document.getElementById("comment_reply").value
                     var parentName = document.getElementById("comment_reply_name").value
@@ -136,6 +119,7 @@ var send_comment = new Vue({
                         url: "/addComment?bid=" + bid + "&parent=" + reply + "&userName=" + name + "&email=" + email + "&comments=" + content+"&parentName="+parentName
                     }).then(function (resp) {
                         // console.log(resp)
+                        window.location.reload();
                         alert("评论成功")
                     })
 
