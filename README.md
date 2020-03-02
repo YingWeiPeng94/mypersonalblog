@@ -1,0 +1,28 @@
+##个人博客
+mysql数据库建表：
+1，blog:主键，title标题，views浏览次数,tags文章标签,ctime创建时间，utime修改时间，
+    content内容
+2，comment评论：blog_id(对应评论id,-1为留言页面评论，-2关于页面)，
+    parent(评论回复的父id)，
+    parent_name(评论回复的父名字)
+    comments评论内容,email邮箱，ctime创建时间，utime修改时间
+3,every_day每日一句:content内容，ctime创建时间
+4,tags标签(标签不能重复):tag标签名，ctime创建时间，utime修改时间
+5,tag_blog_mapping(标签id和blogid映射表，不允许重复映射):tag_id(标签的id),blog_id(博客id),ctime创建时间，utime修改时间
+###默认页面功能：
+1，头部导航，搜索
+2，右侧标签云，最近热门博客，最新评论，友情链接
+3，底部展示栏
+###首页内容展示区功能：
+1，每日一句，
+2，文章简单展示，
+3，分页
+###blog详情页
+1，blog全文展示
+2，评论展示
+3，写评论，包括回复功能
+4，验证码
+###关于页，留言页
+简单描述+留言+写评论--简单
+###站点页面
+展示所有blog并点击跳转到详情页
